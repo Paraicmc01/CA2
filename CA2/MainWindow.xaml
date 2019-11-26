@@ -5,12 +5,16 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CA2"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="450" Width="800" Loaded="Window_Loaded">
     <Grid RenderTransformOrigin="0.509,0.505">
-        <ListBox x:Name="lbxAllActivities" HorizontalAlignment="Left" Height="220" Margin="79,111,0,0" VerticalAlignment="Top" Width="238" RenderTransformOrigin="0.432,0.527"/>
-        <ListBox x:Name="lbxSelectedActivities" HorizontalAlignment="Left" Height="220" Margin="491,111,0,0" VerticalAlignment="Top" Width="240" SelectionChanged="ListBox_SelectionChanged"/>
-        <Button x:Name="btnAdd" Content="&gt;&gt;" HorizontalAlignment="Left" Margin="359,136,0,0" VerticalAlignment="Top" Width="85" RenderTransformOrigin="0.08,0.794" Height="32"/>
-        <Button x:Name="btnRemove" Content="&lt;&lt;" HorizontalAlignment="Left" Margin="359,221,0,0" VerticalAlignment="Top" Width="85" RenderTransformOrigin="0.486,0.478" Height="30"/>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="4*"/>
+            <ColumnDefinition Width="7*"/>
+        </Grid.ColumnDefinitions>
+        <ListBox x:Name="lbxAllActivities" HorizontalAlignment="Left" Height="220" Margin="79,111,0,0" VerticalAlignment="Top" Width="238" RenderTransformOrigin="0.432,0.527" Grid.ColumnSpan="2"/>
+        <ListBox x:Name="lbxSelectedActivities" HorizontalAlignment="Left" Height="220" Margin="203.213,111,0,0" VerticalAlignment="Top" Width="240" SelectionChanged="ListBox_SelectionChanged" Grid.Column="1"/>
+        <Button x:Name="btnAdd" Content="&gt;&gt;" HorizontalAlignment="Left" Margin="71.213,136,0,0" VerticalAlignment="Top" Width="85" RenderTransformOrigin="0.08,0.794" Height="32" Grid.Column="1"/>
+        <Button x:Name="btnRemove" Content="&lt;&lt;" HorizontalAlignment="Left" Margin="71.213,221,0,0" VerticalAlignment="Top" Width="85" RenderTransformOrigin="0.486,0.478" Height="30" Grid.Column="1"/>
 
     </Grid>
 </Window>

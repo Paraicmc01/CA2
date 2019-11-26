@@ -10,7 +10,7 @@ namespace CA2
     public class Activity
     {
         //properties
-        public int ActivityDate { get; set; }
+        public DateTime ActivityDate { get; set; }
         public string Name { get; set; }
         public decimal Cost { get; set; }
         public string Description { get; set; }
@@ -18,16 +18,21 @@ namespace CA2
 
 
         //constructors
-        public Activity(int activitydate, string name, decimal cost, string description, ActivityType activitytype)
+        public Activity(DateTime activityDate, string name, decimal cost, string description, ActivityType typeOfActivity)
         {
 
-            ActivityDate = activitydate;
+            ActivityDate = activityDate;
             Name = name;
             Cost = cost;
             Description = description;
-            TypeOfActivity = ActivityType;
+            TypeOfActivity = typeOfActivity;
         }
 
+
+        public Activity()
+        {
+
+        }
         // methods
         public override string ToString()
         {
