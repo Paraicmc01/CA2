@@ -158,9 +158,26 @@ namespace WpfApp1
 
         }
 
-        private void btnAdd_Click_1(object sender, RoutedEventArgs e)
+        private void btnRemove_Click(object sender, RoutedEventArgs e)
         {
 
+            //Figure out what acytivity is selected
+            Activity selected = lbxSelectedActivities.SelectedItem as Activity;
+
+            //null check
+            if (selected != null)
+            {
+                //Move activites from left to right
+                allActivities.Add(selected);
+                chosenActivities.Remove(selected);
+
+                //Refresh the screen 
+                lbxAllActivities.ItemsSource = null;
+                lbxAllActivities.ItemsSource = allActivities;
+
+                lbxSelectedActivities.ItemsSource = null;
+                lbxSelectedActivities.ItemsSource = chosenActivities;
+            }
         }
     }
 }
