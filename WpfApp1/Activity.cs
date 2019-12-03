@@ -14,7 +14,7 @@ namespace WpfApp1
         public string Name { get; set; }
         public decimal Cost { get; set; }
         public string Description { get; set; }
-        public ActivityType TypeOfActivity { get; set; }
+        public string TypeOfActivity { get; set; }
 
 
         //constructors
@@ -25,19 +25,20 @@ namespace WpfApp1
             Name = name;
             Cost = cost;
             Description = description;
-            TypeOfActivity = typeOfActivity;
+            TypeOfActivity = TypeOfActivity;
         }
-
 
         public Activity()
         {
-
         }
+
+
+
 
         // methods
         public override string ToString()
         {
-            return $"{Name}-{ActivityDate}";
+            return $"{Name}-{ActivityDate.ToShortDateString()}";
         }
 
     }

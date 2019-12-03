@@ -22,6 +22,8 @@ namespace WpfApp1
     {
         List<Activity> allActivities = new List<Activity>();
         List<Activity> chosenActivities = new List<Activity>();
+        List<Activity> filteredActivities = new List<Activity>();
+
 
         public MainWindow()
         {
@@ -41,7 +43,7 @@ namespace WpfApp1
                 Name = "Treking",
                 Description = "Instructor led group trek through local mountains.",
                 ActivityDate = new DateTime(2019, 06, 01),
-                TypeOfActivity = ActivityType.Land,
+                TypeOfActivity = "Land",
                 Cost = 20m
             };
 
@@ -50,7 +52,7 @@ namespace WpfApp1
                 Name = "Mountain Biking",
                 Description = "Instructor led half day mountain biking.  All equipment provided.",
                 ActivityDate = new DateTime(2019, 06, 02),
-                TypeOfActivity = ActivityType.Land,
+                TypeOfActivity = "Land",
                 Cost = 30m
             };
 
@@ -59,7 +61,7 @@ namespace WpfApp1
                 Name = "Abseiling",
                 Description = "Experience the rush of adrenaline as you descend cliff faces from 10-500m.",
                 ActivityDate = new DateTime(2019, 06, 03),
-                TypeOfActivity = ActivityType.Land,
+                TypeOfActivity = "Land",
                 Cost = 40m
             };
 
@@ -68,7 +70,7 @@ namespace WpfApp1
                 Name = "Kayaking",
                 Description = "Half day lakeland kayak with island picnic.",
                 ActivityDate = new DateTime(2019, 06, 01),
-                TypeOfActivity = ActivityType.Water,
+                TypeOfActivity = "Water",
                 Cost = 40m
             };
 
@@ -77,7 +79,7 @@ namespace WpfApp1
                 Name = "Surfing",
                 Description = "2 hour surf lesson on the wild atlantic way",
                 ActivityDate = new DateTime(2019, 06, 02),
-                TypeOfActivity = ActivityType.Water,
+                TypeOfActivity = "Water",
                 Cost = 25m
             };
 
@@ -86,7 +88,7 @@ namespace WpfApp1
                 Name = "Sailing",
                 Description = "Full day lakeland kayak with island picnic.",
                 ActivityDate = new DateTime(2019, 06, 03),
-                TypeOfActivity = ActivityType.Water,
+                TypeOfActivity = "Water",
                 Cost = 50m
             };
 
@@ -95,7 +97,7 @@ namespace WpfApp1
                 Name = "Parachuting",
                 Description = "Experience the thrill of free fall while you tandem jump from an airplane.",
                 ActivityDate = new DateTime(2019, 06, 01),
-                TypeOfActivity = ActivityType.Air,
+                TypeOfActivity = "Air",
                 Cost = 100m
             };
 
@@ -104,7 +106,7 @@ namespace WpfApp1
                 Name = "Hang Gliding",
                 Description = "Soar on hot air currents and enjoy spectacular views of the coastal region.",
                 ActivityDate = new DateTime(2019, 06, 02),
-                TypeOfActivity = ActivityType.Air,
+                TypeOfActivity = "Air",
                 Cost = 80m
             };
 
@@ -113,7 +115,7 @@ namespace WpfApp1
                 Name = "Helicopter Tour",
                 Description = "Experience the ultimate in aerial sight-seeing as you tour the area in our modern helicopters",
                 ActivityDate = new DateTime(2019, 06, 03),
-                TypeOfActivity = ActivityType.Air,
+                TypeOfActivity = "Air",
                 Cost = 200m
             };
 
@@ -148,13 +150,12 @@ namespace WpfApp1
                 chosenActivities.Add(selected);
 
                 //Refresh the screen 
-                lbxAllActivities.ItemsSource = null;
-                lbxAllActivities.ItemsSource = allActivities;
-
-                lbxSelectedActivities.ItemsSource = null;
-                lbxSelectedActivities.ItemsSource = chosenActivities;
+                RefreshScreen();
             }
-
+            else
+            {
+                MessageBox.Show("No activity was selected");
+            }
 
         }
 
@@ -172,11 +173,84 @@ namespace WpfApp1
                 chosenActivities.Remove(selected);
 
                 //Refresh the screen 
-                lbxAllActivities.ItemsSource = null;
-                lbxAllActivities.ItemsSource = allActivities;
+                RefreshScreen();
+            }
+          else
+            {
+                MessageBox.Show("No activity was selected");
+            }
 
-                lbxSelectedActivities.ItemsSource = null;
-                lbxSelectedActivities.ItemsSource = chosenActivities;
+        }
+
+        private void RefreshScreen()
+        {
+            lbxAllActivities.ItemsSource = null;
+            lbxAllActivities.ItemsSource = allActivities;
+
+            lbxSelectedActivities.ItemsSource = null;
+            lbxSelectedActivities.ItemsSource = chosenActivities;
+        }
+
+        private void rbtn1_Click(object sender, RoutedEventArgs e)
+        {
+            filteredActivities.Clear();
+
+
+            if (rbtn1.IsChecked == true)
+            {
+                //show all Activites
+                RefreshScreen();
+            }
+            else if (rbtn2.IsChecked == true)
+            {
+                //show all land activities
+                foreach (Activity activity in allActivities)
+                {
+                    if (activity.TypeOfActivity == "Land")
+                    {
+                        filteredActivities.Add(activity);
+                    }
+                    lbxAllActivities.ItemsSource = null;
+                    lbxAllActivities.ItemsSource = filteredActivities;
+                }
+            }
+            else if (rbtn3.IsChecked == true)
+            {
+                // Show all water activites
+                foreach (Activity activity in allActivities)
+                {
+                    if (activity.TypeOfActivity == "Water")
+                    {
+                        filteredActivities.Add(activity);
+                    }
+                    lbxAllActivities.ItemsSource = null;
+                    lbxAllActivities.ItemsSource = filteredActivities;
+                }
+            }
+            else if (rbtn4.IsChecked == true)
+            {
+                // Show all Air activites
+                foreach (Activity activity in allActivities)
+                {
+                    if (activity.TypeOfActivity == "Air")
+                    {
+                        filteredActivities.Add(activity);
+                    }
+                    lbxAllActivities.ItemsSource = null;
+                    lbxAllActivities.ItemsSource = filteredActivities;
+                }
+            }
+
+
+        }
+
+        private void lbxAllActivities_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            //determine what was selected
+            Activity selected = lbxAllActivities.SelectedItem as Activity;
+            if (selected != null)
+            {
+                tblkDescription.Text = selected.Description; // getting the description and displaying in text box
             }
         }
     }
