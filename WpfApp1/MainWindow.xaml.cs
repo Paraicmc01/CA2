@@ -23,7 +23,7 @@ namespace WpfApp1
         List<Activity> allActivities = new List<Activity>();
         List<Activity> chosenActivities = new List<Activity>();
         List<Activity> filteredActivities = new List<Activity>();
-
+        decimal TotalCost = 0;
 
         public MainWindow()
         {
@@ -155,7 +155,10 @@ namespace WpfApp1
             else
             {
                 MessageBox.Show("No activity was selected");
+
             }
+            TotalCost += selected.Cost;
+            txblcst.Text = TotalCost.ToString();
 
         }
 

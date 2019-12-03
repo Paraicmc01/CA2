@@ -18,8 +18,9 @@
         <Label x:Name="lb1" Content="All Activities" HorizontalAlignment="Left" Margin="135,80,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.555,-0.073" Height="26" Width="78"/>
         <Label x:Name="lbl2" Content="Selected Activities" HorizontalAlignment="Left" Margin="514,68,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.266,-0.111" Height="33" Width="128"/>
         <Label x:Name="lbl3" Content="Description" HorizontalAlignment="Left" Margin="84,346,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.504,0.511" Height="24" Width="86"/>
-        <Label x:Name="lbl4" Content="Total Cost" Grid.Column="1" HorizontalAlignment="Left" Margin="203,34,0,0" VerticalAlignment="Top" Height="31" Width="92"/>
+        <Label x:Name="lbl4" Content="Total Cost" HorizontalAlignment="Left" Margin="523,30,0,0" VerticalAlignment="Top" Height="31" Width="92"/>
         <TextBlock x:Name="tblkDescription" HorizontalAlignment="Left" Margin="92,380,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Height="21" Width="639" Grid.ColumnSpan="2" RenderTransformOrigin="0.5,0.5">
         </TextBlock>
+        <TextBlock x:Name="txblcst" HorizontalAlignment="Left" Margin="663,33,0,0" TextWrapping="Wrap" Text="€" VerticalAlignment="Top" RenderTransformOrigin="0.265,-0.688" Height="25" Width="63"/>
     </Grid>
 </Window>
