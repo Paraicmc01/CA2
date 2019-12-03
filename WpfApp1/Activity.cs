@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CA2
+namespace WpfApp1
 {
     public enum ActivityType { Air, Water, Land}
     public class Activity

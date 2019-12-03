@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace CA2
+namespace WpfApp1
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -21,16 +21,17 @@ namespace CA2
     public partial class MainWindow : Window
     {
         List<Activity> allActivities = new List<Activity>();
+        List<Activity> chosenActivities = new List<Activity>();
 
         public MainWindow()
         {
             InitializeComponent();
         }
 
-        private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
 
-        }
+        #region extramethods
+
+        #endregion extramethods
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
@@ -116,11 +117,48 @@ namespace CA2
                 Cost = 200m
             };
 
+            allActivities.Add(l1);
+            allActivities.Add(l2);
+            allActivities.Add(l3);
+            allActivities.Add(a1);
+            allActivities.Add(a2);
+            allActivities.Add(a3);
+            allActivities.Add(w1);
+            allActivities.Add(w2);
+            allActivities.Add(w3);
+
             //display in lisbox
+            lbxAllActivities.ItemsSource = allActivities;
+            lbxSelectedActivities.ItemsSource = chosenActivities;
+
 
         }
 
-        private void Window_Loaded_1(object sender, RoutedEventArgs e)
+
+        private void BtnAdd_Click(object sender, RoutedEventArgs e)
+        {
+            //Figure out what acytivity is selected
+            Activity selected = lbxAllActivities.SelectedItem as Activity;
+
+            //null check
+            if (selected != null)
+            {
+                //Move activites from left to right
+                allActivities.Remove(selected);
+                chosenActivities.Add(selected);
+
+                //Refresh the screen 
+                lbxAllActivities.ItemsSource = null;
+                lbxAllActivities.ItemsSource = allActivities;
+
+                lbxSelectedActivities.ItemsSource = null;
+                lbxSelectedActivities.ItemsSource = chosenActivities;
+            }
+
+
+        }
+
+        private void btnAdd_Click_1(object sender, RoutedEventArgs e)
         {
 
         }
